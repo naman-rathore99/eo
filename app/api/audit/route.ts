@@ -58,7 +58,7 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error("Audit API Error:", error);
     return NextResponse.json(
-      { error: "Failed to process the SEO audit." },
+      { error: error instanceof Error ? error.message : "Failed to process the SEO audit." },
       { status: 500 },
     );
   }
